@@ -1,108 +1,116 @@
 /* --- 1. Global Styles & Greenish Variables --- */
 :root {
-    --bg-gradient-start: #e8f5e9; /* Light Green */
-    --bg-gradient-end: #dcedc8;   /* Slightly darker Light Green */
-    --primary-color: #4CAF50;    /* Material Green */
-    --primary-light: #81C784;   /* Lighter Green */
-    --accent-color: #00acc1;     /* Cyan accent (optional) */
-    --poki-text: #0a2540;        /* Dark blue text */
-    --text-muted: #525f7f;       /* Softer grey text */
-    --card-bg: #ffffff;
-    --sidebar-bg: #ffffff;
-    --border-radius: 20px;
-    --shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
-    --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.08); /* Softer shadow for content */
+    --bg-gradient-start: #e8f5e9; /* Light Green */
+    --bg-gradient-end: #dcedc8;   /* Slightly darker Light Green */
+    --primary-color: #4CAF50;    /* Material Green */
+    --primary-light: #81C784;   /* Lighter Green */
+    --accent-color: #00acc1;     /* Cyan accent (optional) */
+    --poki-text: #0a2540;        /* Dark blue text */
+    --text-muted: #525f7f;       /* Softer grey text */
+    --card-bg: #ffffff;
+    --sidebar-bg: #ffffff;
+    --border-radius: 20px;
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+    --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.08); /* Softer shadow for content */
 
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Roboto', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Roboto', sans-serif;
 }
 
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- CRITICAL GLOBAL OVERFLOW FIXES --- */
+html, body {
+    margin: 0 !important; 
+    padding: 0 !important;
+    overflow-x: hidden !important; /* Forces horizontal scrollbar removal */
+    width: 100vw; /* Ensures it strictly equals the viewport width */
 }
 
 body {
-    font-family: var(--font-body);
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-    color: var(--poki-text);
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--poki-text);
 }
 
 /* --- 2. Main Page Layout (Sidebar + Content) --- */
 .page-container {
-    display: flex;
-    min-height: 100vh; /* Use min-height */
+    display: flex;
+    min-height: 100vh; 
 }
 
+/* --- FINAL SIDEBAR FIX: Use position: fixed and margin-left on content --- */
 .sidebar {
-    width: 90px;
-    background-color: var(--sidebar-bg);
-    height: 100vh; /* Keep sidebar full height */
-    position: sticky;
-    top: 0;
-    padding: 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    z-index: 100;
+    width: 90px;
+    background-color: var(--sidebar-bg);
+    height: 100vh; 
+    position: fixed; /* Takes sidebar OUT of the content flow */
+    top: 0;
+    left: 0;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    z-index: 100;
 }
-
-.sidebar-logo {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--poki-text);
-    text-decoration: none;
-}
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.nav-icon-btn {
-    font-size: 1.5rem; color: #888; background: none; border: none;
-    cursor: pointer; transition: color 0.3s ease;
-}
-.nav-icon-btn:hover { color: var(--primary-color); }
 
 .main-content-area { /* For Homepage */
-    flex: 1; padding: 2rem 3rem; height: 100vh; overflow-y: auto;
+    flex: 1; 
+    padding: 2rem 3rem; 
+    height: 100vh; 
+    overflow-y: auto;
+    margin-left: 90px; /* CRITICAL: Adds space for the fixed sidebar */
 }
 
 /* --- 3. Main Content Styling (Homepage) --- */
+.sidebar-logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--poki-text);
+    text-decoration: none;
+}
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.nav-icon-btn {
+    font-size: 1.5rem; color: #888; background: none; border: none;
+    cursor: pointer; transition: color 0.3s ease;
+}
+.nav-icon-btn:hover { color: var(--primary-color); }
 .search-bar-container { margin-bottom: 2rem; max-width: 600px; }
 .search-bar {
-    display: flex; align-items: center; background: var(--card-bg);
-    border-radius: 50px; padding: 0.75rem 1.5rem; box-shadow: var(--shadow);
+    display: flex; align-items: center; background: var(--card-bg);
+    border-radius: 50px; padding: 0.75rem 1.5rem; box-shadow: var(--shadow);
 }
 .search-bar i { font-size: 1.2rem; color: #aaa; margin-right: 1rem; }
 .search-bar input {
-    border: none; outline: none; font-size: 1.1rem; font-family: var(--font-body);
-    width: 100%; background: transparent;
+    border: none; outline: none; font-size: 1.1rem; font-family: var(--font-body);
+    width: 100%; background: transparent;
 }
-
-/* Generic H1 for homepage */
 .main-content-area h1 {
-    font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1.5rem;
+    font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1.5rem;
 }
 
 /* --- 4. Poki-Style Game Grid (Homepage) --- */
 .game-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
-    gap: 1.25rem; justify-content: center;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+    gap: 1.25rem; justify-content: center;
 }
 .game-card {
-    background-color: var(--card-bg); border-radius: var(--border-radius); overflow: hidden;
-    box-shadow: var(--shadow); text-decoration: none; color: var(--poki-text);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    aspect-ratio: 1 / 1; position: relative;
+    background-color: var(--card-bg); border-radius: var(--border-radius); overflow: hidden;
+    box-shadow: var(--shadow); text-decoration: none; color: var(--poki-text);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1 / 1; position: relative;
 }
 .card-image-wrapper { width: 100%; height: 100%; transition: opacity 0.3s ease; }
 .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
@@ -136,25 +144,25 @@ body {
 
 /* --- 8. Game Page & Content Page Base Layout --- */
 body.game-page-active { /* Added to game/about/privacy body tags */
-     background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-     overflow: auto; /* Allow body scroll */
+     background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+     overflow: auto; /* Allow body scroll */
 }
 /* Container for game pages AND text pages */
 .game-page-container {
-    max-width: 1100px; /* Max width for content area */
-    margin: 0 auto;
-    padding: 1.5rem;
-    width: 100%; /* Ensure it takes width */
+    max-width: 1100px; /* Max width for content area */
+    margin: 0 auto;
+    padding: 1.5rem;
+    width: 100%; /* Ensure it takes width */
 }
 .game-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 2rem; padding: 0 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem; padding: 0 1rem;
 }
 .back-button {
-    display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
-    font-size: 1rem; font-weight: 600; color: var(--poki-text);
-    background-color: var(--card-bg); padding: 0.6rem 1.1rem; border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;
+    display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
+    font-size: 1rem; font-weight: 600; color: var(--poki-text);
+    background-color: var(--card-bg); padding: 0.6rem 1.1rem; border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;
 }
 .back-button:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.1); transform: translateY(-2px); background-color: #eee; }
 .back-button i { font-size: 0.9rem; }
@@ -162,49 +170,48 @@ body.game-page-active { /* Added to game/about/privacy body tags */
 
 /* --- 9. STYLING FOR THE WHITE CONTENT BOX (About/Privacy/Games) --- */
 .game-content { /* Base style for the white box */
-    padding: 1rem 1rem;
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-soft);
-    border: 1px solid #e7eaf3;
-    margin: 0 auto; /* Center the box */
-    max-width: 850px; /* Consistent max width */
+    padding: 1rem 1rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid #e7eaf3;
+    margin: 0 auto; /* Center the box */
+    max-width: 850px; /* Consistent max width */
 }
 /* Styles specific to text pages (About/Privacy) */
 .game-content.text-content {
-    text-align: left;
-    padding: 3rem 3.5rem; /* Specific padding */
-    position: relative; /* For back link positioning */
+    text-align: left;
+    padding: 3rem 3.5rem; /* Specific padding */
 }
 /* Styles specific to actual game pages */
 .game-content:not(.text-content) {
-    text-align: center;
-    min-height: 60vh; /* Only game pages need min-height */
+    text-align: center;
+    min-height: 60vh; /* Only game pages need min-height */
 }
 /* Title inside game content box (both game and text pages) */
 .game-content h1 {
-    font-family: var(--font-heading); /* Ensure font is applied */
-    color: var(--poki-text);
-    margin-bottom: .5rem; /* Consistent spacing */
-    text-align: center; /* Center all titles */
-    text-shadow: none;
-    position: relative; /* For ::after */
-    padding-bottom: 0.75rem; /* Space for line */
-    font-size: 2rem; /* Consistent size */
+    font-family: var(--font-heading); /* Ensure font is applied */
+    color: var(--poki-text);
+    margin-bottom: .5rem; /* Consistent spacing */
+    text-align: center; /* Center all titles */
+    text-shadow: none;
+    position: relative; /* For ::after */
+    padding-bottom: 0.75rem; /* Space for line */
+    font-size: 2rem; /* Consistent size */
 }
 /* Decorative line below H1 */
 .game-content h1::after {
-    content: ''; display: block; width: 100px; height: 3px;
-    background-color: var(--primary-light); border-radius: 2px;
-    margin: 0.75rem auto 0;
+    content: ''; display: block; width: 100px; height: 3px;
+    background-color: var(--primary-light); border-radius: 2px;
+    margin: 0.75rem auto 0;
 }
 /* Back link specific to text content pages */
 .game-content.text-content .back-link {
-    display: inline-flex; align-items: center; position: absolute;
-    top: .5rem; left: 3rem; margin-bottom: 0; text-decoration: none;
-    font-weight: 500; font-size: 0.9rem; color: #555;
-    background-color: transparent; padding: 0; border-radius: 0;
-    transition: color 0.3s ease;
+    display: inline-flex; align-items: center; position: absolute;
+    top: .5rem; left: 3rem; margin-bottom: 0; text-decoration: none;
+    font-weight: 500; font-size: 0.9rem; color: #555;
+    background-color: transparent; padding: 0; border-radius: 0;
+    transition: color 0.3s ease;
 }
 .game-content.text-content .back-link:hover { color: var(--primary-color); }
 .game-content.text-content .back-link i { margin-right: 0.4rem; font-size: 0.8rem; }
@@ -212,15 +219,15 @@ body.game-page-active { /* Added to game/about/privacy body tags */
 .game-content.text-content h1 { padding-top: 2.5rem; }
 /* Subheadings ONLY on text pages */
 .game-content.text-content h2 {
-    font-size: 1.5rem; color: var(--poki-text); font-weight: 600;
-    margin-top: 2.5rem; margin-bottom: 1rem; border: none; padding-bottom: 0;
-    text-align: left; position: relative; display: flex; align-items: center; gap: 0.75rem;
+    font-size: 1.5rem; color: var(--poki-text); font-weight: 600;
+    margin-top: 2.5rem; margin-bottom: 1rem; border: none; padding-bottom: 0;
+    text-align: left; position: relative; display: flex; align-items: center; gap: 0.75rem;
 }
 .game-content.text-content h2 i.fas { font-size: 1em; color: var(--primary-color); }
 /* Text ONLY on text pages */
 .game-content.text-content p, .game-content.text-content ul {
-    font-size: 1rem; line-height: 1.8; color: var(--text-muted);
-    margin-bottom: 1.25rem; text-align: left;
+    font-size: 1rem; line-height: 1.8; color: var(--text-muted);
+    margin-bottom: 1.25rem; text-align: left;
 }
 .game-content.text-content p i.fas { color: var(--primary-light); margin-right: 0.5rem; font-size: 1.1em; vertical-align: -2px; }
 .game-content.text-content ul { padding-left: 1rem; list-style: none; }
@@ -229,9 +236,9 @@ body.game-page-active { /* Added to game/about/privacy body tags */
 
 /* Styles for the inner game container (TicTacToe, Snake etc.) */
 .game-container {
-    display: inline-block; padding: 2rem; border-radius: var(--border-radius);
-    background-color: #f9f9f9; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
-    margin-top: 1rem; /* Add some space below title */
+    display: inline-block; padding: 2rem; border-radius: var(--border-radius);
+    background-color: #f9f9f9; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+    margin-top: 1rem; /* Add some space below title */
 }
 .game-container h2, .game-container h3, .game-container span, .game-container p { color: var(--poki-text); }
 .game-reset-btn { background-color: var(--primary-color); color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1rem; padding: 0.75rem 1.5rem; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); margin-top: 1rem; }
@@ -263,990 +270,42 @@ body.game-page-active { /* Added to game/about/privacy body tags */
 
 /* --- 12. Responsive Design Overrides --- */
 @media (max-width: 768px) {
-    body { overflow: auto; /* Allow body scroll on mobile */ }
-    .page-container { flex-direction: column; height: auto; }
-    .sidebar { width: 100%; height: auto; flex-direction: row; justify-content: space-between; padding: 1rem 1.5rem; position: sticky; top: 0; background-color: var(--sidebar-bg); z-index: 100; }
-    .sidebar-nav { flex-direction: row; }
-    .main-content-area { padding: 1.5rem; height: auto; overflow-y: visible; } /* For homepage */
-    .game-page-container { padding: 1rem; } /* Reduce padding for game/text pages on mobile */
-    .game-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-    .search-bar-container { max-width: 100%; }
+    body { overflow: auto; /* Allow body scroll on mobile */ }
+    .page-container { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; height: auto; flex-direction: row; justify-content: space-between; padding: 1rem 1.5rem; position: sticky; top: 0; background-color: var(--sidebar-bg); z-index: 100; }
+    .sidebar-nav { flex-direction: row; }
+    .main-content-area { padding: 1.5rem; height: auto; overflow-y: visible; } /* For homepage */
+    .game-page-container { padding: 1rem; } /* Reduce padding for game/text pages on mobile */
+    .game-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .search-bar-container { max-width: 100%; }
 
-    /* Sliding Category Tags */
-    .category-tags { display: flex; overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; padding-bottom: 15px; margin-bottom: 1.5rem; scrollbar-width: none; -ms-overflow-style: none; }
-    .category-tags::-webkit-scrollbar { display: none; }
-    .tag { flex-shrink: 0; }
+    /* Sliding Category Tags */
+    .category-tags { display: flex; overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; padding-bottom: 15px; margin-bottom: 1.5rem; scrollbar-width: none; -ms-overflow-style: none; }
+    .category-tags::-webkit-scrollbar { display: none; }
+    .tag { flex-shrink: 0; }
 
-    /* Stack Footer Columns */
-    .footer-content { flex-direction: column; align-items: center; text-align: center; }
-    .footer-left { flex-basis: auto; margin-bottom: 2rem; width: 100%; display: flex; flex-direction: column; align-items: center; }
-    .footer-socials { justify-content: center; }
-    .footer-right { justify-content: center; gap: 2rem; width: 100%; text-align: center; }
-    .footer-column { min-width: 0; width: 100%; margin-bottom: 1rem; }
+    /* Stack Footer Columns */
+    .footer-content { flex-direction: column; align-items: center; text-align: center; }
+    .footer-left { flex-basis: auto; margin-bottom: 2rem; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .footer-socials { justify-content: center; }
+    .footer-right { display: flex; flex: 1; justify-content: center; gap: 2rem; width: 100%; text-align: center; }
+    .footer-column { min-width: 0; width: 100%; margin-bottom: 1rem; }
 
-    /* Game/Content Page Responsive */
-    .game-header { padding: 0; } /* Remove extra padding */
-    .game-content { padding: 1.5rem 1rem; } /* Adjust padding */
-    .game-content h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
-    .game-container { padding: 1rem; } /* Inner game box */
+    /* Game/Content Page Responsive */
+    .game-header { padding: 0; } /* Remove extra padding */
+    .game-content { padding: 1.5rem 1rem; } /* Adjust padding */
+    .game-content h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .game-container { padding: 1rem; } /* Inner game box */
 
-    /* Content Page Text Responsive */
-    .game-content.text-content { padding: 2rem 1.5rem; } /* Mobile padding for text box */
-    .game-content.text-content .back-link { position: static; margin-bottom: 1.5rem; justify-content: center; background-color: rgba(76, 175, 80, 0.08); padding: 0.5rem 1rem; border-radius: 50px; }
-    .game-content.text-content h1 { font-size: 1.6rem; padding-top: 0; } /* Smaller H1 */
-    .game-content.text-content h1::after{ width: 50px; margin-top: 0.5rem; }
-    .game-content.text-content h2 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.75rem; gap: 0.5rem; }
-    .game-content.text-content p, .game-content.text-content ul { font-size: 0.9rem; line-height: 1.7; } /* Smaller text */
-    .content-page-container ul li { padding-left: 1.5rem; }
-    .content-page-container ul li::before{ top: 2px; font-size: 1em; }
+    /* Content Page Text Responsive */
+    .game-content.text-content { padding: 2rem 1.5rem; } /* Mobile padding for text box */
+    .game-content.text-content .back-link { position: static; margin-bottom: 1.5rem; justify-content: center; background-color: rgba(76, 175, 80, 0.08); padding: 0.5rem 1rem; border-radius: 50px; }
+    .game-content.text-content h1 { font-size: 1.6rem; padding-top: 0; } /* Smaller H1 */
+    .game-content.text-content h1::after{ width: 50px; margin-top: 0.5rem; }
+    .game-content.text-content h2 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.75rem; gap: 0.5rem; }
+    .game-content.text-content p, .game-content.text-content ul { font-size: 0.9rem; line-height: 1.7; } /* Smaller text */
+    .content-page-container ul li { padding-left: 1.5rem; }
+    .content-page-container ul li::before{ top: 2px; font-size: 1em; }
 
 }
 /* --------------------------------------------------------------------------------- */
-
-
-/* --- Sidebar Logo Styling (Using Image) --- */
-.sidebar-logo {
-    display: block; /* Make the link a block */
-    padding: 10px 0; /* Add vertical padding if needed */
-    text-align: center; /* Center image within the link area */
-    margin-top: 0.5rem; /* Adjust top margin */
-    margin-bottom: 1rem; /* Space below logo */
-}
-
-.sidebar-logo img {
-    display: block; /* Remove extra space below image */
-    width: 45px;    /* Adjust size - make it slightly larger */
-    height: auto;   /* Maintain aspect ratio */
-    margin: 0 auto; /* Center the image horizontally */
-    object-fit: contain; /* Ensure image scales correctly */
-    transition: transform 0.3s ease; /* Add subtle hover effect */
-}
-
-.sidebar-logo:hover img {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
-/* Remove Font Awesome specific styles if you had them for the logo */
-/* .sidebar-logo .fas.fa-gamepad { ... } */
-
-/* --- (Keep all other existing CSS rules below) --- */
-
-
-
-/* --- 12. Responsive Design Overrides --- */
-@media (max-width: 768px) {
-    body { overflow: auto; }
-    .page-container { flex-direction: column; height: auto; }
-
-    /* --- UPDATED SIDEBAR/HEADER STYLES FOR MOBILE --- */
-    .sidebar {
-        width: 100%;        /* Keep full width */
-        height: auto;       /* Keep auto height */
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center; /* Vertically center items */
-        padding: 0.75rem 1.5rem; /* REDUCED vertical padding, kept horizontal */
-        position: sticky;
-        top: 0;
-        background-color: var(--sidebar-bg);
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Add subtle shadow */
-    }
-    .sidebar-logo {
-        margin-bottom: 0; /* Remove bottom margin specific to mobile header */
-        padding: 0; /* Remove extra padding */
-        height: auto; /* Let image height dictate */
-    }
-    .sidebar-logo img {
-        width: 35px; /* Adjust logo size slightly for header */
-        height: 35px;
-    }
-    .sidebar-nav {
-        flex-direction: row;
-        gap: 1rem; /* Adjust gap between nav icons if needed */
-    }
-     .nav-icon-btn {
-        font-size: 1.4rem; /* Slightly adjust icon size if needed */
-    }
-    /* --- END OF UPDATED SIDEBAR STYLES --- */
-
-
-    .main-content-area { padding: 1.5rem; height: auto; overflow-y: visible; }
-    .game-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-    .search-bar-container { max-width: 100%; }
-
-    /* Sliding Category Tags */
-    .category-tags { display: flex; overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; padding-bottom: 15px; margin-bottom: 1.5rem; scrollbar-width: none; -ms-overflow-style: none; }
-    .category-tags::-webkit-scrollbar { display: none; }
-    .tag { flex-shrink: 0; }
-
-    /* Stack Footer Columns */
-    .footer-content { flex-direction: column; align-items: center; text-align: center; }
-    .footer-left { flex-basis: auto; margin-bottom: 2rem; width: 100%; display: flex; flex-direction: column; align-items: center; }
-    .footer-socials { justify-content: center; }
-    .footer-right { justify-content: center; gap: 2rem; width: 100%; text-align: center; }
-    .footer-column { min-width: 0; width: 100%; margin-bottom: 1rem; }
-
-    /* Content Page Responsive Adjustments */
-    .content-page-container { margin: 1.5rem 1rem; padding: 2rem 1.5rem; }
-    .content-page-container .back-link { position: static; margin-bottom: 1.5rem; justify-content: center; background-color: rgba(76, 175, 80, 0.08); padding: 0.5rem 1rem; border-radius: 50px; }
-    .content-page-container h1 { font-size: 1.8rem; margin-bottom: 1.5rem; padding-top: 0; }
-    .content-page-container h1::after{ width: 50px; margin-top: 0.5rem; }
-    .content-page-container h2 { font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.75rem; gap: 0.5rem; }
-    .content-page-container p, .content-page-container ul { font-size: 0.95rem; line-height: 1.7; }
-    .content-page-container ul li { padding-left: 1.5rem; }
-    .content-page-container ul li::before{ top: 2px; font-size: 1em; }
-
-     /* Game Page Responsive Adjustments */
-     .game-content { padding: 1.5rem 0.5rem; }
-     .game-content h1 { font-size: 1.8rem; margin-bottom: 1rem; }
-     .game-container { padding: 1rem; }
-}
-
-/* --- (Keep all other CSS rules outside the media query) --- */
-/* ------------------------------------------------------------------------------------------ */
-
-/* --- FAQ Accordion Styles --- */
-.faq-list { margin-top: 2rem; }
-.faq-item { margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
-.faq-item:last-child { border-bottom: none; }
-.faq-question {
-    font-weight: 600; cursor: pointer; display: flex;
-    justify-content: space-between; align-items: center;
-    font-size: 1.1rem; color: var(--poki-text); padding: 0.5rem 0;
-}
-.faq-question i.fa-chevron-down {
-    transition: transform 0.3s ease; color: var(--primary-light);
-}
-.faq-answer {
-    /* We control visibility with 'active' class */
-    margin-top: 0.75rem; padding-left: 1rem; color: var(--text-muted);
-    line-height: 1.8; font-size: 0.95rem; max-height: 0; overflow: hidden;
-    transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
-}
-.faq-item.active .faq-answer {
-    max-height: 300px; /* Allow space for content */
-}
-.faq-item.active .faq-question i.fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-/* ----------------------------------------------------------------------- */
-/* --- New Sidebar Back Arrow --- */
-.sidebar-icon-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 45px;
-  height: 45px;
-  font-size: 1.4rem; /* Icon size */
-  color: #888;
-  text-decoration: none;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem; /* Match logo margin */
-  margin-bottom: 1rem; /* Match logo margin */
-}
-
-.sidebar-icon-link:hover {
-  color: var(--primary-color);
-  background-color: #f0f4f0; /* Light green hover */
-}
-
-/* Adjust for mobile header view */
-@media (max-width: 768px) {
-  .sidebar-icon-link {
-    margin: 0; /* Remove margins in horizontal header */
-    width: 35px;
-    height: 35px;
-  }
-}
-/* -------------------------------------------------------- */
-
-/* --------------------------------------------------------------------------------- */
-/* --- Authentication Form Styles --- */
-
-.auth-form {
-  max-width: 400px;
-  margin: 1.5rem auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.form-group input {
-  font-size: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background-color: #f5f7f5;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-}
-
-/* Make the main button full width */
-.auth-form .game-reset-btn {
-  width: 100%;
-}
-/* ------------------------------------------------------------------------ */
-/* ================================================================= */
-/* === FINAL Layout (GameLayout) & Profile CSS (Corrected v15) === */
-/* ================================================================= */
-
-
-
-/* --- Profile Page Two-Column Layout (Applied INSIDE .game-content) --- */
-.profile-page-layout {
-  display: flex;
-  gap: 2.5rem; /* Gap between menu and content */
-  align-items: flex-start;
-}
-
-/* --- Left Navigation Menu (RED CHECKMARKS REMOVAL + WIDTH) --- */
-.profile-nav-menu {
-  flex: 0 0 250px; /* Width of the menu */
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  padding: 1rem 0;
-  border: 1px solid #eee;
-}
-
-.profile-nav-menu ul {
-  list-style: none !important; /* << ENSURE NO DEFAULT LIST MARKERS */
-  padding: 0;
-  margin: 0;
-}
-/* Force removal of checkmarks/bullets */
-.profile-nav-menu li {
-    list-style: none !important;
-    position: relative; /* Needed for absolute pseudo-elements if any exist */
-}
-.profile-nav-menu li::before,
-.profile-nav-menu li::after {
-    content: none !important; /* << AGGRESSIVELY REMOVE PSEUDO-ELEMENTS */
-    display: none !important;
-}
-
-
-.profile-nav-menu li button,
-.profile-nav-menu li .logout-link {
-  display: flex; align-items: center; width: 100%; padding: 1rem 1.75rem;
-  background: none; border: none; text-align: left; font-size: 0.95rem; font-weight: 500;
-  font-family: var(--font-body); color: var(--text-muted); cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-left 0.2s ease, padding-left 0.2s ease;
-  border-left: 5px solid transparent;
-}
-.profile-nav-menu li button i { margin-right: 1rem; font-size: 1rem; width: 20px; text-align: center; color: #9ab; transition: color 0.2s ease; }
-.profile-nav-menu li button:hover { background-color: #f8f9fa; color: var(--poki-text); }
-.profile-nav-menu li button:hover i { color: var(--primary-light); }
-.profile-nav-menu li.active button { background-color: #e8f5e9; color: var(--primary-color); font-weight: 600; border-left-color: var(--primary-color); padding-left: calc(1.75rem - 5px);}
-.profile-nav-menu li.active button i { color: var(--primary-color); }
-.profile-nav-menu .logout-link { color: #dc3545; }
-.profile-nav-menu .logout-link i { color: #f19ca5; }
-.profile-nav-menu .logout-link:hover { background-color: #fdf2f2; color: #b02a37; }
-.profile-nav-menu .logout-link:hover i { color: #dc3545; }
-
-
-/* --- Right Content Area --- */
-.profile-content-area {
-  flex: 1;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-  padding: 2.5rem 3rem;
-  border: 1px solid #f0f0f0;
-  min-height: 450px; /* Adjust as needed */
-}
-.profile-content-area .loading-text,
-.profile-content-area .error-text { text-align: center; color: var(--text-muted); margin-top: 3rem; font-size: 1rem; }
-.profile-content-area .profile-section { margin-bottom: 2.5rem; }
-.profile-content-area .profile-section:last-child { margin-bottom: 0; }
-.profile-content-area h2 { font-size: 1.4rem; font-weight: 600; font-family: var(--font-heading); color: var(--poki-text); margin-bottom: 1.5rem; padding-bottom: 0.7rem; border-bottom: 2px solid #eee; display: block; text-align: left; }
-
-/* --- Account Details Styling --- */
-.profile-account-details { display: flex; align-items: center; background-color: #f8f9fa; border-radius: 10px; padding: 1.5rem 2rem; border: 1px solid #eee; }
-.profile-avatar-placeholder { width: 60px; height: 60px; border-radius: 50%; background-color: #e0e7ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-right: 1.5rem; flex-shrink: 0; }
-.profile-user-info { display: flex; flex-direction: column; flex-grow: 1; }
-.profile-user-name { font-size: 1.4rem; font-weight: 600; font-family: var(--font-heading); color: var(--poki-text); margin-bottom: 0.2rem; }
-.profile-user-email { font-size: 0.95rem; color: var(--text-muted); }
-
-/* --- Stats Grid Styling --- */
-.profile-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; }
-.stat-card { background-color: #f8f9fa; border-radius: 8px; padding: 1.25rem; text-align: center; box-shadow: none; border: 1px solid #eee; transition: background-color 0.2s ease;}
-.stat-card:hover { background-color: #f1f3f5; }
-.stat-card h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.stat-card p { font-size: 2rem; font-weight: 700; color: var(--poki-text); margin: 0; line-height: 1; }
-.stat-card p.stat-wins { color: var(--primary-color); }
-.stat-card p.stat-losses { color: #e53935; }
-
-/* --- Favorites Scroller Styling --- */
-.profile-favorites-scroller { position: relative; margin-top: 0.5rem; }
-.profile-favorites-container { display: flex; overflow-x: auto; padding: 10px 5px 20px 5px; gap: 1rem; white-space: nowrap; scrollbar-width: none; -ms-overflow-style: none; }
-.profile-favorites-container::-webkit-scrollbar { display: none; }
-.favorite-game-card { width: 140px; flex-shrink: 0; display: flex; flex-direction: column; text-decoration: none; background-color: #fff; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease; aspect-ratio: 1 / 1; }
-.favorite-game-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
-.favorite-game-card .card-image-wrapper { height: 100%; width: 100%; position: relative; }
-.favorite-game-card .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-.favorite-game-title { display: none; }
-.favorite-game-card .card-image-wrapper::after { content: attr(data-title); position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.7); color: white; font-size: 0.8rem; padding: 5px; text-align: center; opacity: 0; transition: opacity 0.3s ease; white-space: normal; line-height: 1.2; box-sizing: border-box; }
-.favorite-game-card:hover .card-image-wrapper::after { opacity: 1; }
-.profile-no-favorites { color: var(--text-muted); text-align: center; margin-top: 2rem; font-style: italic; font-size: 0.95rem; }
-
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 992px) {
-     /* Allow main layout to scroll naturally on mobile */
-     .game-layout-main { height: auto; min-height: calc(100vh - 60px); padding: 1rem; display: block; overflow-y: auto; }
-     /* Ensure content box takes space but doesn't force height */
-     .game-layout-main > .game-content { margin: 1rem auto; padding: 1.5rem 1rem; max-height: none; overflow-y: visible; max-width: 95%; /* Adjust max-width for mobile */ }
-     .game-layout-main > .game-content h1 { font-size: 1.8rem; }
-     .game-layout-main > .game-content.text-content { padding: 2rem 1.5rem; }
-
-    /* Profile specific mobile */
-    .profile-page-layout { flex-direction: column; gap: 1.5rem; padding: 0; }
-    .profile-nav-menu { flex: 0 0 auto; width: 100%; border-radius: 10px; }
-    .profile-content-area { min-height: auto; padding: 2rem 1.5rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.07); border: 1px solid #f0f0f0; }
-    .profile-section h2 { font-size: 1.3rem; text-align: center; display: block;}
-    .stat-card p { font-size: 1.8rem; }
-    .favorite-game-card { width: 120px; }
-     .profile-account-details { flex-direction: column; text-align: center; padding: 1.5rem 1rem; }
-     .profile-avatar-placeholder { margin-right: 0; margin-bottom: 1rem; }
-}
-
-/* Ensure these are at the very end to override correctly */
-/* These rules assume profile-page-layout is DIRECTLY inside game-content */
-.game-layout-main > .game-content .profile-page-layout { padding: 0; gap: 2.5rem; /* Match desktop gap */}
-/* Make parent transparent and remove padding */
-.game-layout-main > .game-content { background-color: transparent; box-shadow: none; border: none; padding: 0; /* Important */ max-width: 1100px; /* Match desired overall width */ margin: auto; }
-/* Adjust main layout padding */
-.game-layout-main { padding: 2rem; }
-@media (max-width: 992px) { .game-layout-main { padding: 1rem; } .game-layout-main > .game-content { max-width: 95%; } } /* Adjust max-width on mobile */
-/* ------------------------------------------------------------------ */
-
-/* --- FAQ Component Styles (For the Accordion) --- */
-
-.faq-list {
-    margin-top: 2rem;
-    border: 1px solid #e7eaf3;
-    border-radius: 10px;
-    overflow: hidden; /* Important for clean borders */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
-
-.faq-item {
-    border-bottom: 1px solid #e7eaf3;
-    background-color: #ffffff;
-    transition: background-color 0.3s ease;
-}
-
-.faq-item:last-child {
-    border-bottom: none; /* Remove border from the last item */
-}
-
-.faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 1.5rem;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--poki-text); /* Dark text */
-    transition: background-color 0.3s ease;
-}
-
-.faq-question:hover {
-    background-color: #f7fcf7; /* Very light hover effect */
-}
-
-.faq-question i {
-    font-size: 0.9rem;
-    color: var(--primary-light); /* Green icon color */
-    transition: transform 0.3s ease;
-}
-
-/* --- The crucial styles for the dropdown functionality --- */
-
-/* 1. When the FAQ item is active, rotate the arrow */
-.faq-item.active .faq-question i {
-    transform: rotate(180deg);
-    color: var(--primary-color); /* Darker green when active */
-}
-
-.faq-answer {
-    /* Initially hide the answer content using max-height: 0 */
-    max-height: 0; 
-    overflow: hidden;
-    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-    background-color: #fcfcfc; /* Slightly different background for the answer area */
-}
-
-/* 2. When the FAQ item is active, show the answer */
-/* NOTE: The max-height value must be large enough to contain the longest answer */
-.faq-item.active .faq-answer {
-    max-height: 500px; /* Use a large enough number to guarantee visibility */
-    padding: 0 1.5rem 1.25rem; /* Add padding only when open */
-}
-
-.faq-answer p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-muted); /* Softer text color */
-    margin-bottom: 0; /* Remove default paragraph margin */
-}
-
-.faq-answer ul {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
-    color: var(--text-muted);
-}
-/* -------------------------------------------------------------------- */
-
-
-/* --- Authentication Form Specific Styles --- */
-
-/* 1. Auth Page Container (The White Box) */
-.game-content.text-content.auth-page {
-    /* Use a fixed, manageable size for desktop */
-    max-width: 420px;
-    /* Clean padding for the form */
-    padding: 3.5rem 2.5rem 2.5rem; 
-    text-align: center; /* Center the links and button */
-}
-
-/* 2. Authentication Form Wrapper */
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem; 
-    width: 100%;
-    margin-top: 2rem;
-}
-
-/* 3. Input Group Wrapper (Base for positioning) */
-.form-group {
-    position: relative; 
-    margin-bottom: 0; 
-}
-
-.icon-group {
-    display: flex; 
-    align-items: center;
-    background-color: #f7f7f7; 
-    border-radius: 8px;
-    height: 50px; 
-    padding: 0; 
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-/* 4. Leading Icon (Envelope/Lock) - ABSOLUTE POSITIONING */
-.icon-group > i:first-child { 
-    position: absolute; 
-    left: 15px; /* Desktop position */
-    top: 50%;
-    transform: translateY(-50%); 
-    
-    color: var(--text-muted); 
-    font-size: 1.1rem;
-    z-index: 3; /* Must be high to ensure it sits on top */
-}
-
-/* 5. Input Field (CRUCIAL: Handles the Spacing) */
-.icon-group input {
-    border: none;
-    outline: none;
-    background: transparent;
-    flex-grow: 1; 
-    font-size: 1rem;
-    height: 100%; 
-    color: var(--poki-text);
-    
-    /* Pushes the placeholder text past the absolute icon */
-    padding-left: 50px; 
-    
-    /* Reserves space for the password toggle icon */
-    padding-right: 50px; 
-}
-
-/* 6. Password Toggle Icon (Eye) */
-.password-toggle-icon {
-    position: absolute; 
-    right: 15px; 
-    top: 50%;
-    transform: translateY(-50%); 
-    cursor: pointer;
-    color: var(--text-muted);
-    font-size: 1rem;
-    z-index: 3; 
-}
-
-/* 7. Links and Button */
-.auth-links-extra {
-    /* Reset desktop right-alignment and center it */
-    text-align: center; 
-    margin-top: -0.5rem; 
-    margin-bottom: 1rem; /* Add space below link */
-}
-.auth-form .game-reset-btn {
-    width: 100%; 
-    margin: 0 auto; /* Center button wrapper */
-    margin-top: 1rem; /* Space above button */
-}
-.auth-links {
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-
-/* ---------------------------------------------------------------------- */
-/* --- MOBILE RESPONSIVENESS OVERRIDES --- */
-/* ---------------------------------------------------------------------- */
-
-@media (max-width: 768px) {
-    /* Target tablets/larger phones where layout issues begin */
-
-    .game-content.text-content.auth-page {
-        max-width: 90%; 
-        /* Slightly more generous padding than tiny phones */
-        padding: 2.5rem 1.5rem; 
-    }
-}
-
-@media (max-width: 480px) {
-    /* Target small phones (where the current image looks broken) */
-
-    .game-content.text-content.auth-page {
-        max-width: 95%; 
-        padding: 2rem 1rem; /* Minimal padding on very small screens */
-    }
-
-    /* 1. Input Field Fix (Crucial for Placeholder Visibility) */
-    .icon-group input {
-        /* Reduce padding-left slightly to give placeholder text more room
-           when the screen is narrow. */
-        padding-left: 45px; 
-        padding-right: 45px; 
-        font-size: 0.95rem; 
-    }
-    
-    /* 2. Leading Icon Position */
-    .icon-group > i:first-child { 
-        left: 10px; /* Pull icon 5px closer to the edge */
-        font-size: 1rem; /* Slightly smaller icon */
-    }
-
-    /* 3. Eye Icon Position */
-    .password-toggle-icon {
-        right: 10px; /* Pull icon 5px closer to the edge */
-    }
-
-    /* 4. Center Links (Fixes placement) */
-    .auth-links-extra {
-        text-align: center; 
-        margin-top: 0; /* Align right after input */
-    }
-}
-
-
-/* ---------------------------------------------------------------------- */
-/* --- MOBILE RESPONSIVENESS OVERRIDES --- */
-/* ---------------------------------------------------------------------- */
-
-/* Target phones (where the current image looks broken) */
-@media (max-width: 480px) {
-    
-    .game-content.text-content.auth-page {
-        max-width: 95%; 
-        padding: 2rem 1rem; /* Minimal padding on very small screens */
-    }
-
-    /* 1. Leading Icon Position */
-    .icon-group > i:first-child { 
-        left: 10px; 
-        font-size: 1rem; 
-    }
-
-    /* 2. Password Toggle Icon Position */
-    .password-toggle-icon {
-        right: 10px; 
-    }
-
-    /* 3. Input Field Fix (CRUCIAL FOR PLACEHOLDER VISIBILITY) */
-    .icon-group input {
-        /* INCREASED PADDING: Ensure placeholder text starts far enough right. */
-        padding-left: 60px; /* Pushes text past the icon + its space */
-        padding-right: 10px; /* Ensures space for the right toggle icon */
-        
-        /* FONT FIX: Reduces font size slightly so the placeholder text
-           requires less horizontal space, preventing overflow. */
-        font-size: 0.9rem; 
-    }
-    
-    /* 4. Link and Button Alignment (Ensuring centering) */
-    .auth-links-extra {
-        text-align: center; 
-        margin-top: 0;
-    }
-    
-    .auth-links {
-        text-align: center;
-        margin-top: 1rem;
-    }
-}
-
-
-/* --- Input Field Focus Styles --- */
-
-/* 1. Target the actual INPUT element */
-.icon-group input:focus {
-    outline: none; /* Crucial: Removes the default blue/black browser focus ring */
-    box-shadow: none; /* Ensure no internal shadow/border conflicts */
-}
-
-/* 2. Target the parent container (.icon-group) when an element inside it is focused */
-.icon-group:focus-within {
-    /* Apply a distinct green border to the whole input container */
-    border: 1px solid var(--primary-color); 
-    
-    /* Ensure the padding/sizing doesn't shift much when the border appears */
-    /* If you added a border, you might need to adjust the padding to keep the size consistent, 
-       but we will rely on the box-shadow below to avoid major shifts. */
-       
-    /* Optional: Add a subtle glow (box-shadow) instead of a fixed border */
-    box-shadow: 0 0 0 3px rgba(80, 184, 72, 0.3); /* Subtle green glow */
-
-    /* Change the background color slightly on focus */
-    background-color: var(--card-bg); /* White background on focus */
-}
-
-/* 3. Optional: Change icon color on focus */
-.icon-group:focus-within i {
-    color: var(--primary-color) !important; /* Make the icon green when focused */
-}
-
-/* --- MOBILE RESPONSIVENESS OVERRIDES (FINAL) --- */
-
-@media (max-width: 480px) {
-    
-    /* 1. Overall Box and Title */
-    .game-content.text-content.auth-page {
-        max-width: 950%; 
-        padding: 2rem 1rem; /* Minimal padding */
-    }
-    
-    .game-content.text-content.auth-page h1 {
-        font-size: 2rem;
-    }
-
-    /* 2. Leading Icon Position */
-    .icon-group > i:first-child { 
-        left: 10px; 
-        font-size: 1rem; 
-    }
-
-    /* 3. Password Toggle Icon Position */
-    .password-toggle-icon {
-        right: 5px; /* CRUCIAL: Move the eye icon closer to the edge */
-    }
-
-    /* 4. Input Field Fix (Focus on increasing usable space) */
-    .icon-group input {
-        
-        /* CRUCIAL FIX 1: Reduce padding-right to the absolute minimum 
-           to ensure the eye icon is just cleared. */
-        padding-right: 35px; 
-        
-        /* CRUCIAL FIX 2: Reduce font size to fit long text. */
-        font-size: 0.85rem !important; 
-        
-        /* Padding-left remains at 55px to clear the leading icon */
-    }
-    
-    /* 5. Reduce spacing for the overall form */
-    .auth-form {
-        gap: 0.9rem; /* Less space between fields */
-    }
-
-    /* 6. Link Alignment */
-    .auth-links-extra {
-        text-align: center; 
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-    }
-    
-    .auth-links {
-        text-align: center;
-        margin-top: 0.8rem;
-    }
-}
-/* ----------------------------------------------------------------------------- */
-
-/* --- Global Fix for Game and Auth Pages --- */
-/* This is often a good practice to prevent layout breaks */
-.game-page-container,
-.game-content,
-.game-container {
-    box-sizing: border-box !important; /* Forces padding/border to be inside the width */
-}
-
-/* The main white card container */
-.game-content:not(.text-content) {
-    text-align: center;
-    max-width: fit-content;
-    width: 95%; /* Ensures it fills 95% of the mobile screen */
-    min-height: 60vh;
-}
-
-/* The light gray inner box that holds the board */
-.game-container {
-    display: inline-block;
-    padding: 2rem;
-    max-width: 100%; /* CRUCIAL: MUST NOT exceed the parent width */
-    width: 100%; 
-    /* The white box (game-content) now handles the rounding/shadow, 
-       we remove it here to simplify the layout flow on mobile. */
-    background-color: #ecebeb;
-    border-radius: var(--border-radius); 
-}
-
-/* Mobile Override for the white card padding */
-@media (max-width: 480px) {
-    .game-content { 
-        padding: 1.5rem 0.1rem; /* Reduce padding to an extreme minimum */
-    }
-}
-
-/* In src/assets/css/style.css */
-@media (max-width: 480px) {
-    /* ... other mobile overrides ... */
-    
-    .game-content { 
-        /* CRITICAL CHANGE: Remove all horizontal padding (1.5rem 0) */
-        padding: 1.5rem 10; 
-        /* Ensure max-width is set */
-        width: 100%; 
-        max-width: 100%;
-        border-radius: 0; /* Optional: Remove corner rounding on the edges of the screen */
-    }
-    
-    /* Ensure the inner gray box (game-container) has minimal padding */
-    .game-container {
-        padding: 1rem 0.2rem; /* Minimal internal padding */
-    }
-
-    /* Set the game page background to not scroll */
-    .tic-tac-toe-page {
-        overflow-x: hidden;
-    }
-}
-/* ----------------------------------------------------------- */
-
-
-/* --- 1. Game Card Layout Setup --- */
-/* CRITICAL: Ensure game-card is a positioning context */
-.game-card {
-    position: relative; 
-    /* ... rest of your existing game-card styles ... */
-}
-
-/* --- 2. Favorite Button Styling (.favorite-btn) --- */
-.favorite-btn {
-    /* CRITICAL: Absolute positioning places it in the corner */
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    
-    /* Visual styles */
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    border: none;
-    border-radius: 50%;
-    width: 35px; 
-    height: 35px;
-    
-    /* Centering the icon inside the button */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.favorite-btn:hover {
-    transform: scale(1.1);
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* --- 3. Heart Icon Styling (i) --- */
-.favorite-btn i {
-    font-size: 1.1rem;
-    color: #ccc; /* Default color: Grey outline heart */
-    transition: color 0.2s ease;
-}
-
-/* Style for when the game IS favorited (solid green heart) */
-.favorite-btn i.fas { /* fas = Font Awesome Solid */
-    color: var(--primary-color); /* Your bright green color */
-}
-/* -------------------------------------------------------------------------------------------------------- */
-
-/* --- Favorites Container: Enables Responsive Grid/Flex Layout --- */
-.profile-favorites-container {
-    display: flex;
-    flex-wrap: wrap; /* Allows cards to wrap to the next line */
-    gap: 15px; /* Spacing between cards */
-    padding: 10px;
-    justify-content: center; /* Center cards horizontally */
-}
-
-/* --- Individual Game Card Styling --- */
-.favorite-game-card {
-    /* Base size for mobile (e.g., iPhone 12 Pro width is 390px, so 150px works) */
-    width: 150px; 
-    /* Set a minimum width and allow it to grow/shrink based on container size */
-    flex: 0 0 auto; 
-    
-    /* Ensure the card has a defined aspect ratio or height for consistent display */
-    height: 150px; 
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    overflow: hidden; /* Important for clean corners */
-}
-
-/* --- Media Queries for Tablets and Desktops --- */
-
-/* Medium screens (Tablets: 768px and up) */
-@media (min-width: 768px) {
-    .profile-favorites-container {
-        /* Align cards to the start in wider screens */
-        justify-content: flex-start;
-        /* Increase the number of columns by making cards slightly larger */
-    }
-    .favorite-game-card {
-        width: 180px; 
-        height: 180px;
-    }
-}
-
-/* Large screens (Desktops: 1024px and up) */
-@media (min-width: 1024px) {
-    .favorite-game-card {
-        /* Define a consistent width for desktop view */
-        width: 200px;
-        height: 200px;
-    }
-}
-/* ------------------------------------------------------------------------------ */
-/* Add this to your style.css or a new CSS file */
-
-.device-warning-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Full viewport height */
-    background-color: #f0f2f5dd; /* Light grey background */
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in element's total width and height */
-    text-align: center; /* Center text within the container */
-}
-
-.device-warning-card {
-    background-color: #ffffff; /* White card background */
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    padding: 40px 30px; /* More padding */
-    max-width: 500px; /* Max width for readability */
-    width: 100%;
-    margin: auto; /* Center the card horizontally */
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Modern font stack */
-    color: #333; /* Darker text for better contrast */
-}
-
-.warning-icon {
-    font-size: 3em; /* Larger icon */
-    display: block; /* Make it a block to center */
-    margin-bottom: 20px; /* Space below icon */
-}
-
-.device-warning-card h2 {
-    font-size: 2em; /* Larger heading */
-    color: #d9534f; /* A strong, but not aggressive, warning red */
-    margin-bottom: 25px;
-    font-weight: 700; /* Bolder heading */
-}
-
-.device-warning-card p {
-    font-size: 1.1em; /* Slightly larger paragraph text */
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: #555;
-}
-
-.device-warning-card p:last-of-type {
-    margin-bottom: 0; /* No margin below the last paragraph */
-}
-
-.device-warning-card strong {
-    color: #333; /* Make bold text stand out more */
-    font-weight: 700;
-}
-
-.device-warning-card .small-text {
-    font-size: 0.9em;
-    color: #777;
-    margin-top: 30px; /* More space above the thank you note */
-}
-
-/* Ensure the layout (like the back arrow and profile icon) from GameLayout
-   doesn't interfere or is styled to sit on top of this warning */
-/* This might require some z-index adjustments or specific GameLayout styling */
-.game-layout-header { /* Assuming your header has this class */
-    z-index: 1000; /* Ensure header is above the warning */
-    position: relative; /* Needed for z-index to work */
-}
-
-/* Basic styling for the root element if needed to avoid scroll issues */
-#root, body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-}
-/* ------------------------------------------------------------------------ */
-html, body {
-    /* Resets margins/padding to ensure clean start */
-    margin: 0 !important; 
-    padding: 0 !important;
-
-    /* CRITICAL FIX: Hides any content that goes beyond the screen width */
-    overflow-x: hidden !important; 
-    
-    /* Makes sure the element width is strictly the viewport width */
-    width: 100vw !important; 
-}
