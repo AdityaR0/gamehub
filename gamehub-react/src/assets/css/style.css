@@ -1239,3 +1239,10 @@ body.game-page-active { /* Added to game/about/privacy body tags */
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 /* ------------------------------------------------------------------------ */
+
+html, body {
+    margin: 0 !important; 
+    padding: 0 !important;
+    overflow-x: hidden !important; 
+    width: 100vw !important; 
+}
