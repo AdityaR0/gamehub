@@ -1240,8 +1240,13 @@ body.game-page-active { /* Added to game/about/privacy body tags */
 }
 /* ------------------------------------------------------------------------ */
 html, body {
-    margin: 0;
-    padding: 0;
-    /* This rule is added to hide the horizontal scrollbar */
+    /* Resets margins/padding to ensure clean start */
+    margin: 0 !important; 
+    padding: 0 !important;
+
+    /* CRITICAL FIX: Hides any content that goes beyond the screen width */
     overflow-x: hidden !important; 
+    
+    /* Makes sure the element width is strictly the viewport width */
+    width: 100vw !important; 
 }
