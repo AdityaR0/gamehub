@@ -1,0 +1,83 @@
+/* --- Tic-Tac-Toe Styles (Inside .game-container) --- */
+
+/* Board Styles (No major change needed here) */
+#tic-tac-toe-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  /* Remove margin: auto, container centers it */
+  margin-bottom: 1.5rem; /* Keep space below board */
+  width: fit-content;
+}
+
+.game-cell {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff; /* White cells */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  color: transparent;
+  transform: scale(0.5);
+  border: 1px solid #e8f0e8; /* Lighter border for white cells */
+}
+
+.game-cell:hover {
+  background-color: #f8f8f8; /* Lighter hover for white cells */
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-cell.x, .game-cell.o { transform: scale(1); }
+.game-cell.x { color: var(--accent-color); }
+.game-cell.o { color: var(--poki-text); }
+
+/* Status Text (Keep centered) */
+#game-status {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  color: var(--poki-text);
+  text-align: center;
+}
+
+/* Reset Button (Keep centered) */
+#reset-button.game-reset-btn {
+    display: block;
+    margin: 1rem auto 0; /* Adjusted top margin */
+    min-width: 150px;
+    width: fit-content;
+}
+
+/* --- Responsive --- */
+@media (max-width: 420px) {
+  #tic-tac-toe-board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 8px;
+  }
+  .game-cell { width: 80px; height: 80px; font-size: 3rem; border-radius: 8px;}
+  #game-status { font-size: 1.3rem; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,110 @@
+/* src/assets/css/BubbleShooter.css */
+
+.bs-container {
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; 
+    text-align: center;
+}
+
+.bs-stats {
+    padding: 1px 0;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+#bs-board {
+    width: 100%;
+    background-color: #333; 
+    border-radius: 8px;
+    padding: 3px;
+    margin-bottom: 3px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: crosshair;
+}
+
+.bs-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -5px; /* Pull rows closer to simulate hex grid */
+}
+
+.bs-bubble {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+    transition: all 0.2s;
+}
+
+.bs-bubble.empty {
+    background-color: transparent !important;
+    box-shadow: none;
+    border: none;
+}
+
+/* Bubble Colors */
+.bs-bubble.red, .bs-next-bubble.red { background-color: #f44336; }
+.bs-bubble.blue, .bs-next-bubble.blue { background-color: #2196f3; }
+.bs-bubble.green, .bs-next-bubble.green { background-color: #4caf50; }
+.bs-bubble.yellow, .bs-next-bubble.yellow { background-color: #ffeb3b; }
+
+
+.bs-shooter-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bs-next-bubble-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bs-next-label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.bs-next-bubble {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bs-reset-btn {
+    background-color: var(--secondary-color, #00bcd4); /* Teal button for contrast */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 250px;
+    margin: 5px auto;
+    display: block;
+}
+
+.bs-reset-btn:hover {
+    background-color: var(--secondary-hover, #0097a7);
+}
+
+
+@media (max-width: 450px) {
+    .bs-container { max-width: 350px; padding: 15px; }
+    .bs-bubble { width: 25px; height: 25px; margin: 4px; }
+    .bs-row { margin-bottom: -3px; }
+}

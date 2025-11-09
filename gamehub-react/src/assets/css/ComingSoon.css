@@ -1,0 +1,93 @@
+/* src/assets/css/ComingSoon.css */
+
+.cs-container {
+    /* Uses the familiar white card design */
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; 
+    text-align: center;
+    margin: 10px auto;
+}
+
+.cs-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.cs-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.cs-header h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin: 0;
+    font-family: var(--font-heading);
+}
+
+.cs-message-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--poki-text);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light-bg, #eee);
+}
+
+.cs-details {
+    text-align: left;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.cs-details p {
+    margin-bottom: 10px;
+}
+
+.cs-action {
+    margin-bottom: 20px;
+}
+
+.cs-home-btn {
+    /* Reuse your standard button styling, ensuring it is a Link */
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.cs-home-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+.cs-footer-note {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 550px) {
+    .cs-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+    .cs-header h2 {
+        font-size: 1.5rem;
+    }
+    .cs-message-main {
+        font-size: 1.2rem;
+    }
+}

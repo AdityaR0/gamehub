@@ -1,0 +1,118 @@
+/* src/assets/css/Snake.css */
+
+.snake-container {
+    background-color: #ffffff; 
+    padding: 17px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; 
+    text-align: center;
+}
+
+/* --- Snake Specific Styles (Prefixed) --- */
+
+.snake-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.snake-stat-label {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#snake-board {
+    width: 380px; 
+    height: 320px;
+    display: grid;
+    margin: 0 auto 20px;
+    border: 5px solid #333; 
+    background-color: #c5d8a4; 
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.snake-grid-cell {
+    /* Base cell style */
+}
+
+.snake-body {
+    background-color: var(--accent-color, #4CAF50); 
+    border: 1px solid #388e3c;
+    border-radius: 3px;
+}
+
+.snake-head {
+    background-color: #2e7d32; 
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.snake-food {
+    background-color: #f44336; 
+    border-radius: 50%;
+    transform: scale(0.8);
+}
+
+/* --- Touch Controls (Mobile Responsiveness) --- */
+.snake-touch-controls {
+    display: none; 
+    width: 200px;
+    margin: 20px auto 10px;
+    text-align: center;
+}
+
+.snake-horizontal-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.snake-control-btn {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    touch-action: manipulation; 
+}
+
+.snake-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 250px;
+    margin: 5px auto;
+    display: block;
+}
+
+.snake-reset-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+@media (max-width: 450px) {
+    .snake-container { padding: 15px; }
+    #snake-board {
+        width: 100%; 
+        height: auto;
+        aspect-ratio: 1 / 1; 
+        max-width: 320px; 
+    }
+    .snake-touch-controls {
+        display: block; 
+        max-width: 180px;
+    }
+}

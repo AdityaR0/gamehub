@@ -1,0 +1,96 @@
+/* src/assets/css/Trivia.css */
+
+.trv-container {
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.trv-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.trv-question-box {
+    background-color: var(--light-bg, #f0f0f0);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--poki-text);
+}
+
+.trv-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.trv-option-btn {
+    background-color: #eee;
+    color: var(--poki-text);
+    border: 1px solid #ccc;
+    padding: 15px 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.trv-option-btn:hover:not(:disabled) {
+    background-color: #ddd;
+}
+
+.trv-option-btn.correct {
+    background-color: #4caf50;
+    color: white;
+    border-color: #388e3c;
+}
+
+.trv-option-btn.incorrect {
+    background-color: #f44336;
+    color: white;
+    border-color: #d32f2f;
+}
+
+.trv-game-status {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+}
+
+.trv-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+.trv-reset-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 450px) {
+    .trv-container { max-width: 350px; padding: 15px; }
+    .trv-question-box { font-size: 1.2rem; }
+    .trv-options { grid-template-columns: 1fr; gap: 10px; }
+}

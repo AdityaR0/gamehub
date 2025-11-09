@@ -1,0 +1,237 @@
+/* src/assets/css/Tetris.css */
+
+.tt-container {
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.tt-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.tt-next-piece-box {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+#tt-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    width: 250px; /* Board width */
+    height: 400px; /* Board height */
+    margin: 0 auto 20px;
+    border: 5px solid #222;
+    background-color: #000; /* Classic black background */
+}
+
+.tt-cell {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Placeholder colors for Tetris pieces (0 is empty) */
+.tt-color-1 { background-color: #ff3b30; } /* Red */
+.tt-color-2 { background-color: #4caf50; } /* Green */
+.tt-color-3 { background-color: #2196f3; } /* Blue */
+.tt-color-4 { background-color: #ffeb3b; } /* Yellow */
+.tt-color-5 { background-color: #9c27b0; } /* Purple */
+.tt-color-6 { background-color: #ff9800; } /* Orange */
+.tt-color-7 { background-color: #00bcd4; } /* Cyan */
+
+.tt-game-status {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+}
+
+.tt-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+@media (max-width: 450px) {
+    .tt-container { max-width: 320px; }
+    #tt-board { 
+        width: 200px; 
+        height: 400px; 
+    }
+}
+/* ---------------------------------------------------------------------- */
+/* src/assets/css/Tetris.css (Basic Setup) */
+
+.tt-container {
+    /* Set max width to constrain the game card */
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.tt-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* --- Game Board --- */
+#tt-board {
+    display: grid;
+    /* 10 columns wide */
+    grid-template-columns: repeat(10, 1fr); 
+    /* 20 rows tall */
+    grid-template-rows: repeat(20, 1fr); 
+    
+    width: 100%;
+    /* Ensure aspect ratio 10:20 (1:2) is maintained */
+    aspect-ratio: 1 / 2; 
+    
+    background: #000;
+    border: 5px solid #333;
+    margin: 0 auto 20px;
+}
+
+.tt-cell {
+    /* Cell base style */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Piece Colors (CRITICAL: Must match the color strings in the JS) --- */
+.tt-color-0 { 
+    background: #000; 
+}
+.tt-color-cyan { 
+    background: #00ffff; 
+}
+.tt-color-blue { 
+    background: #0000ff; 
+}
+.tt-color-orange { 
+    background: #ffaa00; 
+}
+.tt-color-yellow { 
+    background: #ffff00; 
+}
+.tt-color-green { 
+    background: #00ff00; 
+}
+.tt-color-purple { 
+    background: #ff00ff; 
+}
+.tt-color-red { 
+    background: #ff0000; 
+}
+/* --------------------------------------------------------------------- */
+
+.tt-reset-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #2099e0;
+    color: white;
+    border: none;
+}
+/* ===================================================================== */
+/* src/assets/css/Tetris.css (Final Width Compression Fix) */
+
+.tt-container {
+    /* Set max width to constrain the game card */
+    max-width: 400px;
+    margin: auto;
+    /* Reduced vertical padding and constrained horizontal padding (FIX 3) */
+    padding: 15px 20px 20px 20px; 
+    text-align: center;
+}
+
+.tt-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* --- Game Board (CRITICAL FIX: Enforce Fixed Size with Pixels) --- */
+/* The base unit for the cell width on desktop will be 15px (15px * 10 columns = 150px) */
+/* Let's aim for a total board width of 300px for desktop to align with previous efforts. */
+
+#tt-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    grid-template-rows: repeat(20, 1fr); 
+    
+    /* CRITICAL FIX 1: Set a fixed maximum pixel width, which takes precedence */
+    width: 100%; /* Allows it to be responsive below max-width */
+    max-width: 300px; 
+    
+    /* CRITICAL FIX 2: Explicitly define height to ensure aspect ratio is used immediately */
+    height: 319px; /* 2x the width (300px * 2) */
+    
+    background: #000;
+    border: 5px solid #333;
+    margin: 0 auto 20px;
+    box-sizing: border-box; /* Ensures border is counted inside width/height */
+}
+
+.tt-cell {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Piece Colors (CRITICAL: Must match the color strings in the JS) --- */
+.tt-color-0 { background: #000; }
+.tt-color-cyan { background: #00ffff; }
+.tt-color-blue { background: #0000ff; }
+.tt-color-orange { background: #ffaa00; }
+.tt-color-yellow { background: #ffff00; }
+.tt-color-green { background: #00ff00; }
+.tt-color-purple { background: #ff00ff; }
+.tt-color-red { background: #ff0000; }
+
+.tt-reset-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #2099e0;
+    color: white;
+    border: none;
+}
+
+@media (max-width: 400px) {
+    #tt-board {
+        /* CRITICAL FIX 3: Switch to responsive sizing for mobile */
+        width: 90%; 
+        max-width: 300px;
+        height: auto; /* Allow height to be determined by aspect-ratio */
+        aspect-ratio: 1 / 2; /* Use responsive aspect ratio */
+    }
+}

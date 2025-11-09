@@ -1,0 +1,80 @@
+/* src/assets/css/Checkers.css */
+
+.ckr-container {
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.ckr-stats {
+    padding: 1px 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+#ckr-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 380px;
+    height: 350px;
+    margin: 0 auto 20px;
+    border: 5px solid #333;
+}
+
+.ckr-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    user-select: none;
+}
+
+.ckr-square.light { background-color: #f0d9b5; } /* Non-playable (light) */
+.ckr-square.dark { background-color: #7d4422; }  /* Playable (dark wood/brown) */
+
+.ckr-square.playable:hover:not(.selected) {
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.ckr-square.selected {
+    background-color: var(--accent-color) !important;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.ckr-game-status {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+}
+
+.ckr-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+@media (max-width: 450px) {
+    .ckr-container { max-width: 350px; }
+    #ckr-board { 
+        width: 300px; 
+        height: 300px; 
+    }
+    .ckr-square { font-size: 1.5rem; }
+}

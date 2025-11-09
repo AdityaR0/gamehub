@@ -1,0 +1,114 @@
+/* src/assets/css/Solitaire.css */
+
+.sol-container {
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px; /* Wider for 7 columns */
+    text-align: center;
+}
+
+.sol-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+/* --- Card Styles --- */
+.sol-card {
+    width: 80px;
+    height: 110px;
+    background-color: #fff;
+    border: 1px solid #777;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.sol-card.back {
+    background-color: var(--accent-color); /* Blue/Green card back */
+    color: white;
+    font-size: 0;
+    border: none;
+}
+.sol-card.red { color: #f44336; }
+.sol-card.black { color: #222; }
+
+.sol-empty-slot {
+    width: 80px;
+    height: 110px;
+    border: 2px dashed #bbb;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #bbb;
+    font-size: 0.8rem;
+}
+
+/* --- Layout Areas --- */
+.sol-top-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+#sol-tableau-area {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.sol-pile {
+    position: relative;
+    width: 80px;
+    min-height: 110px; /* Base size for empty piles */
+}
+
+/* Spacer for aligning foundations to the right */
+.sol-spacer {
+    flex-grow: 1;
+    min-width: 50px;
+}
+
+.tableau-pile {
+    min-height: 300px; /* Ensure tableaus have vertical space */
+}
+
+/* Reset Button */
+.sol-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto 5px;
+    display: block;
+}
+
+@media (max-width: 950px) {
+    .sol-container { max-width: 600px; }
+    /* Stack foundations vertically on smaller screens */
+    .sol-top-area { flex-wrap: wrap; justify-content: flex-start; }
+    .sol-pile { margin-bottom: 10px; }
+    .sol-spacer { display: none; }
+    #sol-tableau-area { flex-wrap: wrap; }
+}

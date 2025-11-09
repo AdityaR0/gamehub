@@ -1,0 +1,101 @@
+/* src/assets/css/Mahjong.css */
+
+.mj-container {
+    background-color: #ffffff; 
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.mj-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 10 px 0;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+#mj-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for a 4x5 grid */
+    gap: 8px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    background-color: var(--light-bg, #f0f0f0);
+    border-radius: 12px;
+}
+
+.mj-tile {
+    height: 70px;
+    width: 50px;
+    background-color: var(--accent-color); 
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+
+.mj-tile:hover:not(.matched):not(.selected) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mj-tile-content {
+    /* Ensures content is visible when selected or matched */
+    user-select: none;
+}
+
+.mj-tile.selected {
+    background-color: #fff;
+    color: var(--poki-text);
+    border: 3px solid var(--accent-color);
+}
+
+.mj-tile.matched {
+    background-color: #c8e6c9; /* Light green for matched */
+    color: #388e3c;
+    cursor: default;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+.mj-game-status {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.mj-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+.mj-reset-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+@media (max-width: 450px) {
+    .mj-container { max-width: 350px; padding: 15px; }
+    #mj-board { gap: 6px; padding: 8px; }
+    .mj-tile { height: 50px; font-size: 1.5rem; }
+}

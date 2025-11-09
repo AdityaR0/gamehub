@@ -1,0 +1,73 @@
+/* src/assets/css/PacMan.css */
+
+.pm-container {
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.pm-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 1px 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+#pm-board {
+    display: grid;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto 20px;
+    border: 3px solid #000;
+    background-color: #000;
+    width: 350px; 
+    height: 350px;
+}
+
+.pm-cell {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #ffeb3b; /* Dot/Entity color */
+}
+
+.pm-wall {
+    background-color: #0000ff; /* Blue wall */
+    border: 1px solid #0000ff;
+}
+
+.pm-game-status {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+}
+
+.pm-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+@media (max-width: 450px) {
+    .pm-container { max-width: 350px; }
+    #pm-board { 
+        width: 300px; 
+        height: 300px; 
+    }
+}

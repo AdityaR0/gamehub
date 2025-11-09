@@ -1,0 +1,88 @@
+/* src/assets/css/FlappyBird.css */
+
+.fb-container {
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.fb-stats {
+    padding: 1px 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+#fb-board {
+    position: relative;
+    margin: 0 auto;
+    background-color: #79ddff; /* Sky blue background */
+    border: 3px solid var(--poki-text);
+    overflow: hidden;
+    cursor: pointer;
+    max-height: 363px;
+    max-width: 350px;
+    /* Dimensions set inline in JSX */
+}
+
+.fb-bird {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ffeb3b;
+    border-radius: 50%;
+    border: 2px solid orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    z-index: 10;
+    transition: transform 0.05s ease-out; /* Slight tilt effect */
+}
+
+.fb-pipe {
+    position: absolute;
+    width: 50px;
+    background-color: #4caf50;
+    border: 2px solid #388e3c;
+    z-index: 5;
+    transition: left linear; /* Pipe movement */
+}
+
+.top-pipe { top: 0; border-bottom: none; }
+.bottom-pipe { border-top: none; }
+
+
+.fb-game-status {
+    font-size: 1rem;
+    margin: 10px 0 10px;
+}
+
+.fb-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+@media (max-width: 450px) {
+    .fb-container { max-width: 350px; }
+    #fb-board { 
+        width: 280px !important; 
+        height: 400px !important; 
+    }
+}
+/* ------------------------------------------------------------ */

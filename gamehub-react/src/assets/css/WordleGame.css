@@ -1,0 +1,108 @@
+/* src/assets/css/WordleGame.css */
+
+.wordle-container {
+    background-color: #ffffff; 
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+#game-status {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    color: var(--poki-text);
+    text-align: center;
+    min-height: 20px;
+}
+
+.wordle-grid {
+    display: grid;
+    gap: 8px;
+    margin: 0 auto 15px;
+    width: fit-content;
+}
+
+.wordle-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.wordle-tile {
+    width: 60px;
+    height: 48px;
+    border: 2px solid #ccc;
+    background-color: transparent;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--poki-text);
+    transition: all 0.3s ease-in-out;
+}
+
+.wordle-tile.editing {
+    border-color: #888;
+}
+
+.wordle-tile.correct {
+    background-color: #6aaa64; /* Green */
+    border-color: #6aaa64;
+    color: white;
+}
+
+.wordle-tile.present {
+    background-color: #c9b458; /* Yellow */
+    border-color: #c9b458;
+    color: white;
+}
+
+.wordle-tile.absent {
+    background-color: #787c7e; /* Gray */
+    border-color: #787c7e;
+    color: white;
+}
+
+.wordle-keyboard-tip {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.wordle-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 200px;
+    margin: 10px auto;
+    display: block;
+}
+
+.wordle-reset-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+@media (max-width: 450px) {
+    .wordle-container { padding: 15px; }
+    .wordle-tile {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        gap: 6px;
+    }
+    .wordle-grid {
+        gap: 6px;
+    }
+}

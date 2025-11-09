@@ -1,0 +1,376 @@
+/* src/assets/css/StonePaperScissors.css */
+
+.sps-container {
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; 
+    text-align: center;
+}
+
+/* --- SPS Score Board --- */
+.sps-score-board {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.sps-score-label {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* --- SPS Game Board/Choices --- */
+#sps-board {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--light-bg, #f0f0f0); 
+    padding: 20px 10px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.sps-choice-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sps-separator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #999;
+}
+
+.sps-choice-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.sps-choice-button {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sps-choice-button:hover:not(:disabled) {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.sps-final-choice {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.sps-waiting-choice {
+    font-size: 2rem;
+    color: #aaa;
+}
+
+.sps-win-highlight {
+    background-color: #c8e6c9; 
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.sps-choice-label {
+    margin-top: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* --- Button Styles (Prefixed) --- */
+.sps-reset-btn {
+    display: block;
+    margin: 10px auto; 
+    min-width: 180px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sps-reset-btn.primary-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.sps-reset-btn.primary-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+.sps-reset-btn.secondary-btn {
+    background-color: #9e9e9e;
+    max-width: 150px;
+    font-size: 0.9em;
+    color: white;
+}
+
+.sps-reset-btn.secondary-btn:hover {
+    background-color: #757575;
+}
+
+@media (max-width: 420px) {
+    .sps-container { padding: 20px; }
+    .sps-choice-button { width: 70px; height: 70px; font-size: 2.5rem; }
+    .sps-final-choice { width: 80px; height: 80px; font-size: 3.5rem; }
+}
+/* --------------------------------------------------------------------------- */
+/* src/assets/css/StonePaperScissors.css */
+
+/* --- Main Container --- */
+.sps-container {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    max-width: 4200px; /* This max-width is crucial */
+    text-align: center;
+    margin: 0 auto; 
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+/* --- SPS Score Board --- */
+.sps-score-board {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 2px solid #e0e0e0; 
+}
+
+.sps-score-label {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* --- SPS Game Board/Choices --- */
+#sps-board {
+    display: flex;
+    /* Changed to space-evenly to distribute space more evenly between items */
+    justify-content: space-evenly; 
+    align-items: center;
+    background-color: var(--light-bg, #f7f7f7); 
+    padding: 20px 10px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    /* IMPORTANT: Ensure this width allows space for padding and children */
+    width: calc(100% - 20px); /* Adjust to fit within sps-container's padding */
+    max-width: 380px; 
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box; /* Crucial for proper width calculation */
+}
+
+.sps-choice-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Allow these to shrink and grow, but primarily shrink */
+    flex: 1 1 auto; 
+    min-width: 0; /* Allow content to shrink below its intrinsic width */
+    padding: 0 55px; /* Add slight horizontal padding to prevent elements from touching edges */
+    box-sizing: border-box;
+}
+
+.sps-separator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #999;
+    /* Give the separator fixed minimal width to ensure other flex items have space */
+    flex-shrink: 0; 
+    margin: 0 5px; /* Adjust margin around VS */
+}
+
+.sps-choice-options {
+    display: flex;
+    gap: 8px; 
+    margin-bottom: 1px;
+    /* Allow choice buttons to wrap if needed on very small screens */
+    flex-wrap: wrap; 
+    justify-content: center; /* Center buttons if they wrap */
+    width: 100%; /* Ensure options take full available width */
+}
+
+.sps-choice-button {
+    width: 65px; 
+    height: 65px;
+    background: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 10px; 
+    font-size: 2.5rem; 
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Prevent buttons from shrinking too much */
+}
+
+.sps-choice-button:hover:not(:disabled) {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.sps-final-choice {
+    width: 80px; 
+    height: 80px;
+    border-radius: 12px;
+    font-size: 3.5rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    flex-shrink: 0; /* Prevent the final choice box from shrinking */
+}
+
+.sps-waiting-choice {
+    font-size: 2rem;
+    color: #aaa;
+}
+
+.sps-win-highlight {
+    background-color: #c8e6c9; 
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.sps-choice-label {
+    margin-top: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+    /* Ensure text doesn't cause overflow */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Button Styles (Prefixed) --- */
+.sps-reset-btn {
+    display: block;
+    margin: 1px auto; 
+    min-width: 180px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* --- Media Queries for Responsiveness (Mobile) --- */
+
+@media (max-width: 480px) { /* Changed breakpoint to catch more common phone sizes */
+    .sps-container { 
+        padding: 20px 15px; /* Adjusted padding */
+        max-width: 95%; /* Allow it to be a bit wider if needed */
+    }
+
+    #sps-board {
+        padding: 15px 5px; /* Reduced padding for the board */
+        flex-wrap: wrap; /* Allow the player/computer areas to wrap */
+        justify-content: center; /* Center items when wrapped */
+        width: 100%;
+    }
+
+    .sps-choice-area {
+        flex: 1 1 45%; /* Allow choice areas to take ~half width when wrapped */
+        padding: 0;
+        margin-bottom: 10px; /* Add margin when stacked */
+    }
+
+    .sps-separator {
+        /* When wrapped, the VS separator might be better placed in its own row */
+        flex-basis: 100%; /* Make VS take full width */
+        margin: 10px 0; /* Add vertical margin */
+        order: 2; /* Position it between player and computer if they wrap */
+    }
+    
+    .sps-choice-options {
+        /* On very small screens, let buttons stack within their area */
+        flex-direction: row; /* Keep buttons in a row for slightly more space */
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center;
+        gap: 5px;
+    }
+    .sps-choice-button {
+        width: 55px; /* Further reduce button size */
+        height: 55px;
+        font-size: 2rem;
+    }
+    
+    .sps-final-choice { 
+        width: 70px; /* Further reduce final choice size */
+        height: 70px; 
+        font-size: 3rem; 
+    }
+    
+    .sps-reset-btn {
+        min-width: 120px;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .sps-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* For extremely small screens, like old iPhones or very narrow viewports */
+@media (max-width: 320px) {
+    .sps-container {
+        padding: 10px;
+    }
+    .sps-choice-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    .sps-final-choice {
+        width: 60px;
+        height: 60px;
+        font-size: 2.5rem;
+    }
+    .sps-choice-label {
+        font-size: 0.8rem;
+    }
+}
+
+
+

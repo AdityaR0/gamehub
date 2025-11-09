@@ -1,0 +1,98 @@
+/* src/assets/css/SlidingPuzzle.css */
+
+.puzzle-container {
+    background-color: #ffffff; 
+    padding: 1px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 460px; 
+    text-align: center;
+}
+
+/* --- Puzzle Specific Styles (Prefixed) --- */
+
+.puzzle-stats {
+    padding: 3px 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.puzzle-stat-label {
+    /* For centered layout */
+    display: block; 
+}
+
+#puzzle-board {
+    width: 330px; 
+    height: 330px;
+    display: grid;
+    gap: 8px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    background-color: var(--light-bg, #f0f0f0); 
+    border-radius: 12px;
+}
+
+.puzzle-tile {
+    background-color: var(--accent-color); 
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.puzzle-tile:hover {
+    background-color: var(--accent-hover, #45a049);
+    transform: scale(1.03);
+}
+
+.empty-tile {
+    background-color: transparent !important;
+    box-shadow: none;
+    cursor: default;
+}
+
+.puzzle-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto;
+    display: block;
+}
+
+.puzzle-reset-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+
+@media (max-width: 450px) {
+    .puzzle-container { padding: 15px; max-width: 320px; }
+    #puzzle-board {
+        width: 300px;
+        height: 300px;
+        gap: 6px;
+        padding: 8px;
+    }
+    .puzzle-tile { font-size: 2rem; }
+}
+
+
+
+

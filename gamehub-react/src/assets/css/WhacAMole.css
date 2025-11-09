@@ -1,0 +1,312 @@
+/* src/assets/css/WhacAMole.css */
+
+.wam-container {
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+/* --- Whac a Mole Specific Styles (Prefixed) --- */
+
+.wam-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.wam-stat-item {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.wam-stat-label {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.wam-stat-value {
+    font-size: 1.6em;
+    color: var(--poki-text);
+    font-family: var(--font-heading);
+    font-weight: bold;
+}
+
+.wam-stat-value.wam-time-low {
+    color: #ff3b30; 
+    animation: wam-pulse 1s infinite alternate;
+}
+
+@keyframes wam-pulse {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
+#wam-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+    background-color: #a0522d; 
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.wam-hole {
+    height: 100px;
+    background-color: #8b4513; 
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.1s;
+}
+
+.wam-hole:active {
+    background-color: #6a350f; 
+}
+
+.wam-mole {
+    position: absolute;
+    bottom: -100%; 
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: #795548; 
+    border-radius: 50% 50% 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 3em;
+    transition: bottom 0.2s ease-out; 
+    padding-bottom: 5px;
+}
+
+.wam-mole.visible {
+    bottom: 0; 
+}
+
+.wam-reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 250px;
+    margin: 5px auto;
+    display: block;
+}
+
+.wam-reset-btn:hover {
+    background-color: var(--accent-hover, #45a049);
+}
+
+.wam-reset-btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+@media (max-width: 450px) {
+    .wam-container { padding: 15px; max-width: 350px; }
+    #wam-board { gap: 10px; padding: 15px; }
+    .wam-hole { height: 80px; }
+    .wam-mole { font-size: 2.5em; }
+}
+/* ------------------------------------------------------------------------ */
+/* src/assets/css/WhacAMole.css (Revised for wider/shorter holes) */
+
+.wam-container {
+    background-color: #ffffff; 
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 99%; 
+    max-width: 500px; /* Increased container max-width to allow for wider board */
+    text-align: center;
+    margin: 3px auto; 
+    box-sizing: border-box; /* Crucial for consistent sizing */
+}
+
+/* --- Whac a Mole Specific Styles (Prefixed) --- */
+
+.wam-title { /* Added this if you used the recommended H1 class from SPS */
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 2px solid #a8dadc;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.wam-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 1px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.wam-stat-item {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.wam-stat-label {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.wam-stat-value {
+    font-size: 1.6em;
+    color: var(--poki-text);
+    font-family: var(--font-heading);
+    font-weight: bold;
+}
+
+.wam-stat-value.wam-time-low {
+    color: #ff3b30; 
+    animation: wam-pulse 1s infinite alternate;
+}
+
+@keyframes wam-pulse {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
+/* --- Game Board (Grid) --- */
+#wam-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+    background-color: #a0522d; 
+    padding: 25px;
+    border-radius: 12px;
+    /* Increased max-width for the board itself */
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.wam-hole {
+    /* KEY CHANGE: Defined both width and height to create the oval shape */
+    width: 130px; /* Wider */
+    height: 70px;  /* Shorter */
+    background-color: #8b4513; 
+    border-radius: 50% / 100%; /* Makes it a horizontal oval */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.1s;
+    box-sizing: border-box;
+    /* Ensure holes are centered within grid cells if they don't fill completely */
+    justify-self: center; 
+    align-self: center;
+}
+
+.wam-hole:active {
+    background-color: #6a350f; 
+}
+
+.wam-mole {
+    position: absolute;
+    /* Adjust bottom to -100% of its own height, which is 100% of the hole's height */
+    bottom: -100%; 
+    left: 0;
+    right: 0;
+    height: 100%; /* Mole's height is 100% of the hole's height */
+    background-color: #795548; 
+    /* Adjust border-radius to match the top curvature of the oval hole */
+    border-radius: 50% 50% 0 0; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 3em; /* Slightly reduced mole font size to fit better in shorter hole */
+    transition: bottom 0.2s ease-out; 
+    padding-bottom: 2px; /* Reduced padding to bring mole higher */
+}
+
+.wam-mole.visible {
+    bottom: 0; 
+}
+
+/* --- Buttons --- */
+.wam-reset-btn {
+    background-color: var(--accent-color, #2099e0);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 300px; 
+    margin: 8px auto;
+    display: block;
+}
+
+.wam-reset-btn.secondary-btn {
+    background-color: #9e9e9e;
+    max-width: 200px;
+    font-size: 0.9em;
+    color: white;
+}
+
+/* --- Media Query for Small Screens (Adjusted) --- */
+@media (max-width: 600px) { /* Adjust breakpoint to match new container max-width */
+    .wam-container { 
+        padding: 20px; 
+        max-width: 95%; 
+        margin: 15px auto;
+    }
+    #wam-board { 
+        gap: 15px; 
+        padding: 20px; 
+        max-width: 380px; /* Ensure board scales down */
+    }
+    .wam-hole { 
+        width: 100px; /* Reduced size for smaller screens */
+        height: 60px;
+        font-size: 2.5em; 
+    }
+    .wam-mole {
+        font-size: 2.5em; /* Mole scales with hole */
+    }
+    .wam-reset-btn {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 400px) {
+    .wam-container { 
+        padding: 15px;
+    }
+    #wam-board { 
+        gap: 10px; 
+        padding: 15px; 
+        max-width: 300px; /* Further reduced max-width for very small screens */
+    }
+    .wam-hole { 
+        width: 80px; 
+        height: 50px; 
+        font-size: 2em; 
+    }
+    .wam-mole { 
+        font-size: 2em; 
+    }
+}

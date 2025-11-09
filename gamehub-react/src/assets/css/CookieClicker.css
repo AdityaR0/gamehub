@@ -1,0 +1,180 @@
+/* src/assets/css/CookieClicker.css */
+
+.cc-container {
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+.cc-stats {
+    padding: 10px 0;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--poki-text);
+    border-bottom: 1px solid var(--border-color, #eee);
+    display: flex;
+    justify-content: space-around;
+}
+
+#cc-click-area {
+    margin: 20px auto;
+}
+
+.cc-cookie-btn {
+    background: none;
+    border: none;
+    font-size: 8rem;
+    cursor: pointer;
+    transition: transform 0.1s;
+    user-select: none;
+}
+
+.cc-cookie-btn:active {
+    transform: scale(0.95);
+}
+
+.cc-game-status {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cc-upgrades {
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--light-bg, #f0f0f0);
+    border-radius: 8px;
+}
+
+.cc-upgrades h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--poki-text);
+}
+
+.cc-upgrade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.cc-upgrade-item:last-child {
+    border-bottom: none;
+}
+
+.cc-buy-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.cc-buy-btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+.cc-reset-btn {
+    background-color: #f44336; /* Red reset button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: block;
+}
+
+@media (max-width: 450px) {
+    .cc-container { max-width: 350px; padding: 15px; }
+    .cc-cookie-btn { font-size: 6rem; }
+}
+/* --------------------------------------------------------- */
+/* src/assets/css/CookieClicker.css */
+
+.cc-container {
+    background-color: #ffffff; 
+    /* FIX 1: Significantly reduce vertical padding on the main card */
+    padding: 20px 30px; 
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; 
+    text-align: center;
+    margin: 20px auto; 
+}
+
+/* --- Stats Area --- */
+.cc-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 3px 0;
+    /* FIX 2: Reduce margin below the stats bar */
+    margin-bottom: 10px; 
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* --- Cookie Button Area --- */
+#cc-click-area {
+    /* FIX 3: Reduce margin around the cookie image */
+    margin: 10px 0; 
+}
+
+.cc-cookie-btn {
+    /* Ensure the button content is sized appropriately */
+    font-size: 5rem; 
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* --- Status and Upgrade Area --- */
+.cc-game-status {
+    /* FIX 4: Reduce margin on the status message */
+    margin: 15px 0; 
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.cc-upgrades h3 {
+    /* FIX 5: Eliminate default h3 margins */
+    margin-top: 1px; 
+    margin-bottom: 1px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.1rem;
+}
+
+/* --- Upgrade Items --- */
+.cc-upgrade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    /* FIX 6: Reduce spacing between upgrade rows */
+    margin-bottom: 5px; 
+}
+
+.cc-reset-btn {
+    /* FIX 7: Reduce margin above the reset button */
+    margin-top: 20px; 
+    margin-bottom: 0;
+}
