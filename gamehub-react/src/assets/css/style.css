@@ -1239,3 +1239,9 @@ body.game-page-active { /* Added to game/about/privacy body tags */
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 /* ------------------------------------------------------------------------ */
+html, body {
+    margin: 0;
+    padding: 0;
+    /* This rule is added to hide the horizontal scrollbar */
+    overflow-x: hidden !important; 
+}
